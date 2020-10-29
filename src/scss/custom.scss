@@ -1,0 +1,15 @@
+
+$body-bg: #292929;
+
+$card-bg: #E7EAF1;
+
+$font-family-sans-serif: Roboto;
+
+$card-border-radius: 0px;
+
+$theme-colors: (
+  "primary": #E23E57,
+  "danger": #ff4136
+);
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
