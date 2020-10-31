@@ -1,56 +1,63 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+
+import UserModel from '../../UserModel';
+
+import { useRecoilState } from "recoil";
+import { userState } from '../../recoil/atoms'
 
 import { Nav, Navbar, Container } from 'react-bootstrap';
 
 import './Header.css';
 
-class Header extends Component {
-    state = {  }
-    render() { 
-        return ( 
-            <Navbar collapseOnSelect expand="lg">
-                <Container>
-                <Navbar.Brand href="#home">Flôr</Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="ml-auto">
-                    
-                    <Nav.Link>
-                    <NavLink to="/">Home</NavLink>
-                    </Nav.Link>
-                    
-                    <Nav.Link>
-                        <NavLink to="/profile">Profile</NavLink>
-                    </Nav.Link>
+const Header = (props) =>  {
+    const [user, setUser] = useRecoilState(userState);
 
-                    <Nav.Link>
-                    <NavLink to="/login">Login</NavLink>
-                    </Nav.Link>
+    useEffect(function(){
+        if(localStorage.access_token) {
+          UserModel.show().then((response) => {
+            setUser(response.username);
+          })
+        }
+      },[])
 
-                    <Nav.Link>
-                    <NavLink to="/register">Register</NavLink>
-                    </Nav.Link>
-
-                    </Nav>
-                </Navbar.Collapse>
-                </Container>
-                </Navbar>
-        );
+    function logout() {
+    setUser(null);
+    localStorage.clear();
     }
+
+    return ( 
+        <Navbar collapseOnSelect expand="lg">
+            <Container>
+            <Navbar.Brand href="#home">Flôr</Navbar.Brand>
+            <div>{user ? (<h1>Hello {user}</h1>) : (<h1>Hello</h1>)}</div>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+                <Nav className="ml-auto">
+
+            {user ? (
+                <>
+                <li>{user.username}</li>
+                <Nav.Link as={NavLink} to="/">Home</Nav.Link>
+                <Nav.Link as={NavLink} to="/profile">Profile</Nav.Link>
+                <Nav.Link as={NavLink} to="/new_post">New Post</Nav.Link>
+                <li className='btn' onClick={logout}>
+                    Log Out
+                </li>
+                </>
+                ) : (
+                <>
+                <Nav.Link as={NavLink} to="/login">Login</Nav.Link>
+
+                <Nav.Link as={NavLink} to="/register">Register</Nav.Link>
+                </>
+            )}               
+
+                </Nav>
+            </Navbar.Collapse>
+            </Container>
+            </Navbar>
+    );
 }
  
 export default Header;
-
-// <Navbar collapseOnSelect expand="lg">
-//                 <Navbar.Brand href="#home">Flôr</Navbar.Brand>
-//                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-//                 <Navbar.Collapse id="responsive-navbar-nav">
-//                     <Nav className="ml-auto">
-//                         <NavLink to="/">Home</NavLink>
-//                         <NavLink to="/profile">Profile</NavLink>
-//                         <NavLink to="/login">Login</NavLink>
-//                         <NavLink to="/register">Register</NavLink>
-//                     </Nav>
-//                 </Navbar.Collapse>
-//             </Navbar>
