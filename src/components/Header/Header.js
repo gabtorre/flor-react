@@ -30,7 +30,7 @@ const Header = (props) =>  {
         <Navbar collapseOnSelect expand="lg">
             <Container>
             <Navbar.Brand href="#home">Flôr</Navbar.Brand>
-            <div>{user ? (<h1>Hello {user}</h1>) : (<h1>Hello</h1>)}</div>
+            <div>{user ? (<h4>Hello {user}</h4>) : (<h4>Hello</h4>)}</div>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="ml-auto">

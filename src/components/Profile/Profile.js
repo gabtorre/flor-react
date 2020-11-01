@@ -1,7 +1,7 @@
 import React from 'react'
 import PostModel from '../../PostModel';
 import axios from 'axios';
-import { Container, CardGroup } from 'react-bootstrap';
+import { Container, CardGroup, Row } from 'react-bootstrap';
 import PostTemplate from '../../components/Post/PostTemplate';
 
 class Profile extends React.Component {
@@ -23,6 +23,7 @@ class Profile extends React.Component {
           .catch(function(error) {
             console.log(error);
           });
+        console.log(data.data.owner)
         this.setState({ posts: data.data });
         
       }
@@ -35,13 +36,19 @@ class Profile extends React.Component {
         return (
             <Container fluid="md">
             <CardGroup>
+            <Row md={3}>
             {this.state.posts.map((post, index) => (
                 <PostTemplate 
                     index={index} 
+                    id={post.id}
+                    owner={post.owner.username}
+                    email={post.owner.email}
                     caption={post.caption} 
                     image={post.image} 
+                    // timestamp={post.timestamp}
                     />
             ))}
+            </Row>
             </CardGroup>
             </Container>
         );
