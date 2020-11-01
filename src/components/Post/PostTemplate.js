@@ -1,4 +1,4 @@
-import { Button, Card, Col, Modal, Example } from 'react-bootstrap';
+import { Button, Card, Col, Modal, Example, Image } from 'react-bootstrap';
 import { React, Component, useState, Link} from 'react'
 
 const PostTemplate = (props) => {
@@ -19,13 +19,17 @@ const PostTemplate = (props) => {
   
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>{props.owner}</Modal.Title>
+            <Modal.Title>
+            <Image className='avatar' src={props.owner_avatar} roundedCircle />
+            <p style={{ paddingTop: 15, marginLeft: 15 }}>{props.owner}</p>
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body><Card.Img variant="top" src={props.image} />
           </Modal.Body>
           <Modal.Footer>
           <h4>{props.owner}</h4>{props.caption}{props.email}
-          {/* {props.timestamp} */}
+          
+          
           </Modal.Footer>
         </Modal>
       </>

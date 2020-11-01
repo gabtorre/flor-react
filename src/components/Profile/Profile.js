@@ -44,8 +44,9 @@ class Profile extends React.Component {
                     owner={post.owner.username}
                     email={post.owner.email}
                     caption={post.caption} 
-                    image={post.image} 
-                    // timestamp={post.timestamp}
+                    image={post.image}
+                    owner_avatar={post.owner.avatar} 
+                    timestamp={post.timestamp}
                     />
             ))}
             </Row>

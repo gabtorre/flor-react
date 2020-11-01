@@ -12,11 +12,12 @@ function Register(props) {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [fav_color, setColor] = useState("");
     const setUser = useSetRecoilState(userState)
 
     function handleSubmit(event) {
         event.preventDefault();
-        AuthModel.register({username, email, password}).then((response) => {
+        AuthModel.register({username, email, password, fav_color}).then((response) => {
           return console.log(response);          
         }).then((user) => {
             AuthModel.login({username, password}).then((response) => {
@@ -63,6 +64,14 @@ function Register(props) {
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}/>
+        </Form.Group>
+
+        <Form.Group controlId="formBasicText">
+            <Form.Label>Fav Color</Form.Label>
+            <Form.Control type="text" placeholder="Fav Color"
+            name="fav_color" 
+            value={fav_color} 
+            onChange={(e) => setColor(e.target.value)}/>
         </Form.Group>
 
         <Button className="btn-block" variant="primary" type="submit">

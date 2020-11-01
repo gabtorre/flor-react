@@ -31,5 +31,16 @@ $h4-font-size: $font-size-base * 1.0;
   justify-content: flex-start!important;
 }
 
+.modal-title {
+  display: flex;
+  line-height: 0!important;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+}
+
+
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
