@@ -17,8 +17,8 @@ const PostTemplate = (props) => {
         </Card>
         </Col>
   
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
+        <Modal show={show} onHide={handleClose} animation={false}>
+          <Modal.Header>
             <Modal.Title>
             <Image className='avatar' src={props.owner_avatar} roundedCircle />
             <p style={{ paddingTop: 15, marginLeft: 15 }}>{props.owner}</p>

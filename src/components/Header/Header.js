@@ -10,6 +10,9 @@ import { Nav, Navbar, Container } from 'react-bootstrap';
 
 import './Header.css';
 
+import HomeIcon from '@material-ui/icons/Home';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+
 const Header = (props) =>  {
     const [user, setUser] = useRecoilState(userState);
 
@@ -27,10 +30,13 @@ const Header = (props) =>  {
     }
 
     return ( 
-        <Navbar collapseOnSelect expand="lg">
+        <Navbar collapseOnSelect expand="lg" 
+        className={`${user ? "active" : "nav-transparent"}`}>
             <Container>
-            <Navbar.Brand href="#home">Flôr</Navbar.Brand>
-            <div>{user ? (<h4>Hello {user}</h4>) : (<h4>Hello</h4>)}</div>
+            <Navbar.Brand href="#home"
+            className={`${user ? "active" : "text-white"}`}
+            >Flôr</Navbar.Brand>
+            <div>{user ? (<h4>Hello {user}</h4>) : (<h4></h4>)}</div>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="ml-auto">
@@ -38,8 +44,9 @@ const Header = (props) =>  {
             {user ? (
                 <>
                 <li>{user.username}</li>
-                <Nav.Link as={NavLink} to="/">Home</Nav.Link>
-                <Nav.Link as={NavLink} to="/profile">Profile</Nav.Link>
+                
+                <Nav.Link as={NavLink} to="/home"><HomeIcon /></Nav.Link>
+                <Nav.Link as={NavLink} to={`/profile/${user}`}><AccountCircleIcon /></Nav.Link>
                 <Nav.Link as={NavLink} to="/new_post">New Post</Nav.Link>
                 <li className='btn' onClick={logout}>
                     Log Out
@@ -47,9 +54,9 @@ const Header = (props) =>  {
                 </>
                 ) : (
                 <>
-                <Nav.Link as={NavLink} to="/login">Login</Nav.Link>
+                <Nav.Link as={NavLink} className="text-white" to="/login">Log In</Nav.Link>
 
-                <Nav.Link as={NavLink} to="/register">Register</Nav.Link>
+                <Nav.Link as={NavLink} className="text-white" to="/register">Sign Up</Nav.Link>
                 </>
             )}               
 
