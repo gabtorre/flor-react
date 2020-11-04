@@ -23,14 +23,16 @@ class Profile extends React.Component {
           .catch(function(error) {
             console.log(error);
           });
-        console.log(data.data.owner)
         this.setState({ posts: data.data });
         
-      }
+      };
+
+      
 
     componentDidMount() {
         this.getPosts();
       }
+
     
     render() { 
         return (
@@ -47,6 +49,7 @@ class Profile extends React.Component {
                     image={post.image}
                     owner_avatar={post.owner.avatar} 
                     timestamp={post.timestamp}
+                    getpost={this.getPosts}
                     />
             ))}
             </Row>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AuthModel from '../../AuthModel';
 import UserModel from '../../UserModel'
 
@@ -10,6 +10,7 @@ import { Form, Button, Card, Container } from 'react-bootstrap';
 function LoginForm(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+
     const setUser = useSetRecoilState(userState)
 
     function handleSubmit(event){
@@ -22,11 +23,11 @@ function LoginForm(props) {
             UserModel.show().then((response) => {
                 console.log(response)
                 setUser(response.username);
-                props.history.push("/profile");
+                props.history.push(`/profile/${response.id}/`);
+                window.location.reload();
             })
         })
     }
-
 
 
     return (  

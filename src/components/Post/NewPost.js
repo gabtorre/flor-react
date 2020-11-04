@@ -12,7 +12,7 @@ function NewPost(props) {
 
         PostModel.create({ image, caption }).then(
             (data) => {
-              props.history.push('/profile');
+                props.history.push(`/profile/${data.id}/`);
             }
           );
     }

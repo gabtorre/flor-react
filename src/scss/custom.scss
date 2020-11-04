@@ -3,15 +3,21 @@ $body-bg: #292929;
 
 $card-bg: #E7EAF1;
 
+$modal-content-bg: #E7EAF1;
+
 .blur {
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.3)!important;
-  border-radius: 40px!important;
+  backdrop-filter: blur(10px) saturate(180%);
+  background-color: rgba(177, 177, 177, 0.3)!important;
+  border-radius: 30px!important;
 }
 
 $font-family-sans-serif: Roboto;
 
 $card-border-radius: 0px;
+
+.primary-text {
+  color:#E23E57;
+}
 
 $theme-colors: (
   "primary": #E23E57,
@@ -48,9 +54,9 @@ $h4-font-size: $font-size-base * 1.0;
 }
 
 .home-div {
-  width:100vw;
+  // width:100vw;
   height:100vh;
-  background-image: url('https://images.unsplash.com/photo-1555086156-e6c7353d283f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
+  background-image: url('https://i.imgur.com/XwrRF9C.jpg');
   background-repeat: no-repeat;
   // background-size: contain;
   background-position:center;
@@ -65,18 +71,83 @@ $h4-font-size: $font-size-base * 1.0;
   width: 100%!important;
 }
 
-.rounded {
-  border-radius: 40%!important;
-
+.rounded-img {
+  border-radius: 20%!important;
 }
-
-$border-radius: .2rem !default;
 
 .home-title {
   margin-top: 160px;
   font-size: 5em;
   color: #fff;
   text-transform: uppercase;
+}
+
+.jumbotron {
+  margin-bottom: 0!important;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom, rgba(255,0,0,0), rgb(0, 0, 0));
+    opacity: 1;
+  }
+}
+
+.jumbotron-img {
+  background-position: center!important;
+  background-repeat: no-repeat!important;
+  background-size: cover!important;
+  position: relative!important;
+}
+
+.caption {
+  font-size: 0.9em;
+  padding-top: 3px;
+}
+
+.timestamp {
+  font-size: 10px;
+  color: #686868;
+  padding-top: 3px;
+  text-transform: uppercase;
+  flex-basis: 100%;
+}
+
+.profile-div {
+  display: flex;
+}
+
+.break {
+  flex-basis: 100%;
+}
+
+.home-card-body {
+  padding: 0!important;
+}
+
+.home-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.home-card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.home-card-footer p {
+  font-size: 0.9em;
+  margin: 0px 6px 5px;
+}
+
+.modal-content {
+  border-radius: 0!important;
+  border: 0px solid rgba(0, 0, 0, 0.2);
 }
 
 @import "../../node_modules/bootstrap/scss/bootstrap";

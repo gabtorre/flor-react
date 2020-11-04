@@ -12,12 +12,13 @@ function Register(props) {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [fav_color, setColor] = useState("");
+    const [avatar, setAvatar] = useState("");
+    const [cover, setCover] = useState("");
     const setUser = useSetRecoilState(userState)
 
     function handleSubmit(event) {
         event.preventDefault();
-        AuthModel.register({username, email, password, fav_color}).then((response) => {
+        AuthModel.register({username, email, password, avatar, cover}).then((response) => {
           return console.log(response);          
         }).then((user) => {
             AuthModel.login({username, password}).then((response) => {
@@ -28,7 +29,7 @@ function Register(props) {
                 UserModel.show().then((response) => {
                     console.log(response)
                     setUser(response.username);
-                    props.history.push("/profile");
+                    props.history.push(`/profile/${response.id}/`);
                 })
             })
         })
@@ -67,11 +68,19 @@ function Register(props) {
         </Form.Group>
 
         <Form.Group controlId="formBasicText">
-            <Form.Label>Fav Color</Form.Label>
-            <Form.Control type="text" placeholder="Fav Color"
-            name="fav_color" 
-            value={fav_color} 
-            onChange={(e) => setColor(e.target.value)}/>
+            <Form.Label>Avatar</Form.Label>
+            <Form.Control type="text" placeholder="Avatar"
+            name="avatar" 
+            value={avatar} 
+            onChange={(e) => setAvatar(e.target.value)}/>
+        </Form.Group>
+
+        <Form.Group controlId="formBasicText">
+            <Form.Label>Cover Image</Form.Label>
+            <Form.Control type="text" placeholder="Cover Image"
+            name="cover" 
+            value={cover} 
+            onChange={(e) => setCover(e.target.value)}/>
         </Form.Group>
 
         <Button className="btn-block" variant="primary" type="submit">
