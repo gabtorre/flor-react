@@ -10,8 +10,8 @@ const Home = () => {
     return (  
             <div className="home-div">
                 <Container className="d-flex flex-column align-items-">
-                    <h1 className="text-center home-title" style={{transform: 'skew(0deg, -5deg)' }}><strong>Don't Miss A Beat</strong></h1>
-                    <img style={{ mixBlendMode: 'darken', position: 'absolute', left: 0, right: 0, margin: '0 auto' }} src="https://i.stack.imgur.com/Jw3f1.gif"/>
+                    <h1 className="text-center home-title" style={{zIndex: 3, transform: 'skew(25deg, -5deg)' }}><strong>Don't Miss A Beat</strong></h1>
+                    <img style={{ mixBlendMode: 'darken', position: 'absolute', left: 0, right: 0, margin: '0 auto', marginTop: -35 }} src="https://i.stack.imgur.com/Jw3f1.gif"/>
                     <div className="text-center">
                     {/* <Link to='http://localhost:3000/register'>
                     <Button className="text-primary" variant="light" size="lg" style={{ marginTop: 50 }}>Get Started</Button></Link> */}
@@ -23,10 +23,9 @@ const Home = () => {
                             <Card.Body className="text-center">
                             <Card.Title className="primary-text"><h3>alignment</h3></Card.Title>
                             <Card.Text>
-                                This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.
+                                <h1><strong>150</strong></h1><h4 style={{marginTop: -10}}>Posts</h4>
                             </Card.Text>
-                            <Button style={mystyle} size="lg" className="btn-block" >Follow</Button>
+                            <Button style={mystyle} size="md" className="btn-block" >Follow</Button>
                             </Card.Body>
                         </Card>
                         <Card className="blur">
@@ -35,10 +34,9 @@ const Home = () => {
                             <Card.Body className="text-center">
                             <Card.Title className="primary-text"><h3>spfdj</h3></Card.Title>
                             <Card.Text>
-                                This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.
+                            <h1 ><strong>194</strong></h1><h4 style={{marginTop: -10}}>Posts</h4>
                             </Card.Text>
-                            <Button style={mystyle} size="lg" className="btn-block" >Follow</Button>
+                            <Button style={mystyle} size="md" className="btn-block" >Follow</Button>
                             </Card.Body>
                         </Card>
                         <Card className="blur">
@@ -46,10 +44,9 @@ const Home = () => {
                             <Card.Body className="text-center">
                             <Card.Title className="primary-text"><h3>hadone</h3></Card.Title>
                             <Card.Text>
-                                This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.
+                            <h1><strong>200</strong></h1><h4 style={{marginTop: -10}}>Posts</h4>
                             </Card.Text>
-                            <Button style={mystyle} size="lg" className="btn-block" >Follow</Button>
+                            <Button style={mystyle} size="md" className="btn-block" >Follow</Button>
                             </Card.Body>
                         </Card>
                     </CardDeck>

@@ -11,6 +11,18 @@ class PostModel {
         .then(response => response.json());
     }
 
+    static comment = (postId, commentData) => {
+        return fetch(`http://localhost:8000/posts/comments/${postId}/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                'Authorization': `JWT ${localStorage.access_token}`
+            },
+            body: JSON.stringify(commentData)
+        })
+        .then(response => response.json());
+    }
+
     static show = (posts) => {
         return fetch('http://localhost:8000/posts/', {
             method: "GET",

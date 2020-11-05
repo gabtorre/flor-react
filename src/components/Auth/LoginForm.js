@@ -34,7 +34,7 @@ function LoginForm(props) {
         <Container>
         <Card className="mx-auto mt-5 text-center" style={{ width: '30rem' }}>
         <Card.Body className="mx-auto mt-4" style={{ width: '25rem' }}>
-        <Card.Title><h3>Welcome to Flôr</h3></Card.Title>
+        <Card.Title><h3>Welcome to pulse</h3></Card.Title>
                         
         <Form className="mt-5 text-left" onSubmit={handleSubmit}>
         <Form.Group controlId="formBasicText">

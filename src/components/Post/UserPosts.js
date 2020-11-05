@@ -4,11 +4,11 @@ import { Container, CardGroup, Row } from 'react-bootstrap';
 import PostTemplate from '../Post/PostTemplate'
 import fetch from 'isomorphic-fetch'
 
-function AllPosts () {
+function AllPosts (props) {
     const [posts, setPosts] = useState([])
 
     useEffect( () => {
-        fetch("http://localhost:8000/posts/", {
+        fetch(`http://localhost:8000/posts/user/${props.user_id}`, {
         headers: {
             'Authorization': `JWT ${localStorage.access_token}`
         }
@@ -32,6 +32,10 @@ function AllPosts () {
                     email={post.owner.email}
                     caption={post.caption} 
                     image={post.image}
+                    soundcloud={post.soundcloud}
+                    beatport={post.beatport}
+                    bandcamp={post.bandcamp}
+                    owner_id={post.owner.id}
                     owner_avatar={post.owner.avatar}
                     timestamp={post.timestamp}
                     />

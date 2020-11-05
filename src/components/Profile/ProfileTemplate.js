@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Image, Jumbotron, Button, Container, Row, Col } from 'react-bootstrap';
 
+import { userState } from '../../recoil/atoms'
+
+import UserModel from '../../UserModel';
+
+import { useRecoilState } from "recoil";
+
 const ProfileTemplate = (props) => {
+    const [user, setUser] = useRecoilState(userState);
+
+    useEffect(function(){
+        if(localStorage.access_token) {
+            UserModel.show().then((response) => {
+            console.log(response.id)
+            setUser(response.id);
+          })
+        }
+      },[])
 
     const { username, id, avatar, cover } = props.profile;
+
+    console.log(parseInt(user), parseInt(id))
 
     return (
         <>
@@ -17,18 +35,21 @@ const ProfileTemplate = (props) => {
             <Col><Image 
             roundedCircle src={avatar} alt={id} 
             style={{height: 150, zIndex: 4}} /></Col>
-            <Col><h3 className="break primary-text">{username}</h3>
-                <p className="break text-white caption">Paris, France</p>
-                <p className="break">
+            <Col style={{display: 'inline-block', alignSelf: 'flex-end'}}><h3 className="break primary-text">{username}</h3>
+                <p style={{ marginBottom: 15 }} className="break text-white caption">Paris, France</p>
+                
                     <Button variant="primary">Follow</Button>
-                </p></Col>
-            <Col>3 of 3</Col>
-        </Row>
+                    
+            </Col>
+            <Col></Col>
+            <Col></Col>
+            <div style={{display: 'inline-block', alignSelf: 'flex-end'}}>
 
-            
-            
-            
-            <Link to={`/profile/${id}/edit`} style={{color: 'black'}}>Edit</Link>
+                {parseInt(user) === parseInt(id) &&
+                    <Button variant="primary" size="sm"><Link to={`/profile/${id}/edit`} style={{color: 'black'}}>Edit Profile</Link></Button>
+                }
+            </div>
+        </Row>
         </Container>
         </>
     )

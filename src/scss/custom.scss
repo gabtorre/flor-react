@@ -105,7 +105,7 @@ $h4-font-size: $font-size-base * 1.0;
 
 .caption {
   font-size: 0.9em;
-  padding-top: 3px;
+  margin: 0.18rem;
 }
 
 .timestamp {
@@ -138,6 +138,7 @@ $h4-font-size: $font-size-base * 1.0;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  padding: 0.75rem 1.25rem 0!important;
 }
 
 .home-card-footer p {
@@ -149,5 +150,27 @@ $h4-font-size: $font-size-base * 1.0;
   border-radius: 0!important;
   border: 0px solid rgba(0, 0, 0, 0.2);
 }
+
+.comment-form {
+  display: flex;
+  border: 0;
+}
+
+.comment-input {
+  border: 0;
+  padding: 0.75rem 1.25rem;
+  flex-basis: 100%;
+  background-color: #E7EAF1;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 0.9em;
+}
+.comment-div {
+  background-color: rgba(0, 0, 0, 0.03);
+  padding: 0 0 0.75rem;
+}
+// .comment-text {
+//   padding: 0 0 -5px;
+// }
 
 @import "../../node_modules/bootstrap/scss/bootstrap";

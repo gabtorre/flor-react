@@ -16,6 +16,7 @@ import { useHistory } from "react-router-dom";
 import HomeIcon from '@material-ui/icons/Home';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const Header = (props) =>  {
     const [user, setUser] = useRecoilState(userState);
@@ -41,7 +42,7 @@ const Header = (props) =>  {
     return ( 
         <Navbar collapseOnSelect expand="lg" >
             <Container>
-            <Navbar.Brand href="#"><strong>Flôr</strong ></Navbar.Brand>
+            <Navbar.Brand href="#"><strong>pulse</strong ></Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="ml-auto">
@@ -52,9 +53,7 @@ const Header = (props) =>  {
                 <Nav.Link as={NavLink} to="/home"><HomeIcon /></Nav.Link>
                 <Nav.Link as={NavLink} to={`/profile/${user}`}><AccountCircleIcon /></Nav.Link>
                 <Nav.Link as={NavLink} to="/new_post"><AddCircleOutlineIcon /></Nav.Link>
-                <li className='btn' onClick={logout}>
-                    Log Out
-                </li>
+                <Nav.Link onClick={logout}><ExitToAppIcon/></Nav.Link>
                 </>
                 ) : (
                 <>

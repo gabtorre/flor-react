@@ -17,7 +17,7 @@ function AllPosts () {
       .then(json => setPosts(json))
     }, []) 
 
-    console.log(posts)
+    console.log("these are the posts",posts)
 
     return (  
         <Container fluid="md" style={{ width: '38rem' }}>
@@ -33,6 +33,9 @@ function AllPosts () {
                     email={post.owner.email}
                     caption={post.caption} 
                     image={post.image}
+                    soundcloud={post.soundcloud}
+                    beatport={post.beatport}
+                    bandcamp={post.bandcamp}
                     owner_avatar={post.owner.avatar}
                     timestamp={post.timestamp}
                     />
