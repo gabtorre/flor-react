@@ -68,7 +68,6 @@ const HomePost = (props) => {
 }
 
 const Comments = (props) =>{
-  console.log("comment props", props)
   return(
     <div className="home-card-footer">
     {props.comments && (

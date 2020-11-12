@@ -18,7 +18,6 @@ class ProfileEdit extends React.Component {
     fetchProfile = () => {
         ProfileModel.show(this.props.match.params.id)
         .then(json => {
-            console.log(json)
             this.setState({
             ...json
             })
@@ -58,7 +57,7 @@ class ProfileEdit extends React.Component {
             <Card.Title><h3>Edit Your Account</h3></Card.Title>
                             
             <Form className="mt-5 text-left" onSubmit={this.handleSubmit}>
-            <Form.Group controlId="formBasicText">
+            <Form.Group controlId="username">
                 <Form.Label>Username</Form.Label>
                 <Form.Control type="text" placeholder="Username"
                 name="username" 
@@ -66,7 +65,7 @@ class ProfileEdit extends React.Component {
                 onChange={this.handleChange}/>
             </Form.Group>
     
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group controlId="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="text" placeholder="Email" 
                 name="email"
@@ -74,7 +73,7 @@ class ProfileEdit extends React.Component {
                 onChange={this.handleChange}/>
             </Form.Group>
     
-            <Form.Group controlId="formBasicPassword">
+            <Form.Group controlId="password">
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" 
                 name="password"
@@ -82,7 +81,7 @@ class ProfileEdit extends React.Component {
                 onChange={this.handleChange}/>
             </Form.Group>
     
-            <Form.Group controlId="formBasicText">
+            <Form.Group controlId="avatar">
                 <Form.Label>Avatar</Form.Label>
                 <Form.Control type="text" placeholder="Avatar"
                 name="avatar" 
@@ -90,7 +89,7 @@ class ProfileEdit extends React.Component {
                 onChange={this.handleChange}/>
             </Form.Group>
     
-            <Form.Group controlId="formBasicText">
+            <Form.Group controlId="cover">
                 <Form.Label>Cover Image</Form.Label>
                 <Form.Control type="text" placeholder="Cover Image"
                 name="cover" 

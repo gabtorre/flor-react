@@ -15,12 +15,10 @@ function LoginForm(props) {
     function handleSubmit(event){
         event.preventDefault();
         AuthModel.login({username, password}).then((response) => {
-            console.log(response);
             localStorage.setItem('access_token', response.access);
             localStorage.setItem('refresh_token', response.refresh);
           
             UserModel.show().then((response) => {
-                console.log(response)
                 setUser(response.username);
                 props.history.push(`/profile/${response.id}/`);
                 window.location.reload();

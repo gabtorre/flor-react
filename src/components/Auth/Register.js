@@ -24,7 +24,6 @@ function Register(props) {
                 localStorage.setItem('refresh_token', response.refresh);
               
                 UserModel.show().then((response) => {
-                    console.log(response)
                     setUser(response.username);
                     props.history.push(`/profile/${response.id}/`);
                 })
