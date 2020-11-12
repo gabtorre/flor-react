@@ -1,22 +1,16 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-
-import UserModel from '../../UserModel';
-import ProfileModel from '../../ProfileModel';
-
+import UserModel from '../../models/UserModel';
 import { useRecoilState } from "recoil";
-import { userState, usernameState } from '../../recoil/atoms'
-
+import { userState } from '../../recoil/atoms';
 import { Nav, Navbar, Container } from 'react-bootstrap';
-
 import './Header.css';
-
 import { useHistory } from "react-router-dom";
-
 import HomeIcon from '@material-ui/icons/Home';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+
 
 const Header = (props) =>  {
     const [user, setUser] = useRecoilState(userState);
@@ -24,7 +18,6 @@ const Header = (props) =>  {
     useEffect(function(){
         if(localStorage.access_token) {
             UserModel.show().then((response) => {
-            console.log(response)
             setUser(response.id);
           })
         }
@@ -36,7 +29,6 @@ const Header = (props) =>  {
     setUser(null);
     localStorage.clear();
     history.push(`/`);
-    window.location.reload();
     }
 
     return ( 

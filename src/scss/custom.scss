@@ -54,14 +54,11 @@ $h4-font-size: $font-size-base * 1.0;
 }
 
 .home-div {
-  // width:100vw;
   height:100vh;
   background-image: url('https://i.imgur.com/XwrRF9C.jpg');
   background-repeat: no-repeat;
-  // background-size: contain;
   background-position:center;
   background-size: cover;
-
   object-fit: fill;
 }
 
@@ -162,15 +159,14 @@ $h4-font-size: $font-size-base * 1.0;
   flex-basis: 100%;
   background-color: #E7EAF1;
 }
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+
+::-webkit-input-placeholder {
   font-size: 0.9em;
 }
+
 .comment-div {
   background-color: rgba(0, 0, 0, 0.03);
   padding: 0 0 0.75rem;
 }
-// .comment-text {
-//   padding: 0 0 -5px;
-// }
 
 @import "../../node_modules/bootstrap/scss/bootstrap";

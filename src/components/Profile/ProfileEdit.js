@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileModel from '../../ProfileModel';
+import ProfileModel from '../../models/ProfileModel';
 import { Form, Button, Card, Container } from 'react-bootstrap';
 
 class ProfileEdit extends React.Component {

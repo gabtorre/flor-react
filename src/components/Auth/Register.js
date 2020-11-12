@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import AuthModel from '../../AuthModel';
-import UserModel from '../../UserModel';
-
+import AuthModel from '../../models/AuthModel';
+import UserModel from '../../models/UserModel';
 import { useSetRecoilState } from "recoil";
 import { userState } from '../../recoil/atoms';
-
 import { Form, Button, Card, Container } from 'react-bootstrap';
 
 
@@ -16,13 +14,12 @@ function Register(props) {
     const [cover, setCover] = useState("");
     const setUser = useSetRecoilState(userState)
 
+    
     function handleSubmit(event) {
         event.preventDefault();
-        AuthModel.register({username, email, password, avatar, cover}).then((response) => {
-          return console.log(response);          
-        }).then((user) => {
+        AuthModel.register({username, email, password, avatar, cover})
+        .then((user) => {
             AuthModel.login({username, password}).then((response) => {
-                console.log(response);
                 localStorage.setItem('access_token', response.access);
                 localStorage.setItem('refresh_token', response.refresh);
               

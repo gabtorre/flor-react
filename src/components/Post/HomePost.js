@@ -1,7 +1,6 @@
-import { Card, Image, Button, ButtonToolbar, ButtonGroup, Row, Container, Col } from 'react-bootstrap';
+import { Card, Image, Button, Row, Container, Col } from 'react-bootstrap';
 import { React, useState, useEffect} from 'react'
-import PostModel from '../../PostModel';
-import {Link} from 'react-router-dom';
+import PostModel from '../../models/PostModel';
 import CloudQueueIcon from '@material-ui/icons/CloudQueue';
 import HeadsetIcon from '@material-ui/icons/Headset';
 
@@ -13,14 +12,14 @@ const HomePost = (props) => {
   }, []) 
 
   const getComments = () => {
-    fetch(`http://localhost:8000/posts/comments/${props.id}/all/`, {
+    fetch(`https://pulse-django.herokuapp.com/posts/comments/${props.id}/all/`, {
     headers: {
         'Authorization': `JWT ${localStorage.access_token}`
         }
       })
       .then(response => response.json())
-      .then(json => setComments(json))
-  }
+      .then(json => setComments(json));
+   }
 
   return (
       <>
@@ -69,11 +68,16 @@ const HomePost = (props) => {
 }
 
 const Comments = (props) =>{
+  console.log("comment props", props)
   return(
     <div className="home-card-footer">
     {props.comments && (
       <>
-        <h4 className="text-primary" style={{paddingTop: '0.05em'}}><a href={`http://localhost:3000/profile/${props.comments.user.id}`} >{props.comments.user.username}</a></h4>
+        <h4 className="text-primary" style={{paddingTop: '0.05em'}}>
+          <a href={`http://localhost:3000/profile/${props.comments.id}`} >
+        {props.comments.username}
+        </a>
+        </h4>
         <p className="text-muted comment-text"> {props.comments.comment}</p>
       </>
     )}

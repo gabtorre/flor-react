@@ -1,7 +1,7 @@
 class AuthModel {
 
     static register = data => {
-        return fetch('http://127.0.0.1:8000/api/user/create/', {
+        return fetch('https://pulse-django.herokuapp.com/api/user/create/', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -12,7 +12,7 @@ class AuthModel {
     }
 
     static login = data => {
-        return fetch('http://127.0.0.1:8000/api/token/obtain/', {
+        return fetch('https://pulse-django.herokuapp.com/api/token/obtain/', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

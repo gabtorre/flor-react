@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import AuthModel from '../../AuthModel';
-import UserModel from '../../UserModel'
-
+import AuthModel from '../../models/AuthModel';
+import UserModel from '../../models/UserModel';
 import { useSetRecoilState } from "recoil";
-import { userState } from '../../recoil/atoms'
-
+import { userState } from '../../recoil/atoms';
 import { Form, Button, Card, Container } from 'react-bootstrap';
+
 
 function LoginForm(props) {
     const [username, setUsername] = useState('');

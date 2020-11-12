@@ -4,11 +4,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { RecoilRoot } from "recoil";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
 import './scss/custom.scss';
-
 import TimeAgo from 'javascript-time-ago'
- 
 import en from 'javascript-time-ago/locale/en'
 TimeAgo.addDefaultLocale(en)
 

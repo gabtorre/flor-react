@@ -1,8 +1,7 @@
 import React from 'react';
 import ProfileTemplate from '../Profile/ProfileTemplate';
-
-import useProfiles from '../../hooks/useProfiles';
 import UserPosts from '../Post/UserPosts'
+import useProfiles from '../../hooks/useProfiles';
 
 function ProfileShow(props) {
     const [profile] = useProfiles(props.match.params.id);

@@ -1,6 +1,7 @@
 class UserModel {
+    
     static show(){
-        return fetch('http://localhost:8000/api/user/current_user/', {
+        return fetch('https://pulse-django.herokuapp.com/api/user/current_user/', {
             method: 'GET',
             headers: {
                 'Authorization': `JWT ${localStorage.access_token}`

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PostModel from '../../PostModel';
+import PostModel from '../../models/PostModel';
 
 import { Form, Button, Card, Container } from 'react-bootstrap';
 
@@ -15,7 +15,7 @@ function NewPost(props) {
 
         PostModel.create({ image, caption, soundcloud, beatport, bandcamp }).then(
             (data) => {
-                props.history.push(`/profile/${data.owner.id}/`);
+                props.history.push(`/profile/${data.owner_id}/`);
             }
           );
     }

@@ -1,8 +1,7 @@
-import Profile from "./components/Profile/Profile";
-
 class ProfileModel {
+    
     static all = () => {
-        return fetch('http://localhost:8000/api/users/', {
+        return fetch('https://pulse-django.herokuapp.com/api/users/', {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
@@ -12,7 +11,7 @@ class ProfileModel {
     }
 
     static show = (profileId) => {
-        return fetch(`http://localhost:8000/api/users/${profileId}/`,{
+        return fetch(`https://pulse-django.herokuapp.com/api/users/${profileId}/`,{
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
@@ -23,7 +22,7 @@ class ProfileModel {
     }
 
     static edit = (profileId, profileData) => {
-        return fetch(`http://localhost:8000/api/users/${profileId}/`, {
+        return fetch(`https://pulse-django.herokuapp.com/api/users/${profileId}/`, {
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json",
@@ -35,7 +34,7 @@ class ProfileModel {
     }
 
     static delete = (profileId) => {
-        return fetch(`http://localhost:8000/api/users/${profileId}/`, {
+        return fetch(`https://pulse-django.herokuapp.com/api/users/${profileId}/`, {
           method: 'DELETE',
           headers: {
             "Content-Type": "application/json",

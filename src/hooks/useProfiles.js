@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import ProfileModel from '../ProfileModel';
+import ProfileModel from '../models/ProfileModel';
 
 function useProfiles(profileId) {
     const [profiles, setProfiles] = useState([]);
@@ -7,7 +7,6 @@ function useProfiles(profileId) {
     function fetchProfiles(id) {
         if (id) {
             ProfileModel.show(id).then((data) => {
-                console.log(data)
                 setProfiles(data);
             });
         } else {

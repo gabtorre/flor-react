@@ -1,45 +1,40 @@
-import { Button, Card, Col, Modal, Example, Image, Row, Container } from 'react-bootstrap';
-import { React, Component, useState, Link, useEffect} from 'react'
-import ReactTimeAgo from 'react-time-ago'
-import UserModel from '../../UserModel';
+import { Button, Card, Col, Modal, Image, Row, Container } from 'react-bootstrap';
+import { React, useState, useEffect} from 'react';
+import ReactTimeAgo from 'react-time-ago';
+import UserModel from '../../models/UserModel';
 import { useRecoilState } from "recoil";
-import { userState } from '../../recoil/atoms'
+import { userState } from '../../recoil/atoms';
 import CloudQueueIcon from '@material-ui/icons/CloudQueue';
 import HeadsetIcon from '@material-ui/icons/Headset';
 
 
-
 const PostTemplate = (props) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [user, setUser] = useRecoilState(userState);
 
     useEffect(function(){
         if(localStorage.access_token) {
             UserModel.show().then((response) => {
-            console.log(response.id)
             setUser(response.id);
           })
         }
       },[])
-
   
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
     const handleDelete = (event, id) => {
-      fetch(`http://localhost:8000/posts/${props.id}/`, {
+      fetch(`https://pulse-django.herokuapp.com/posts/${props.id}/`, {
         method: 'DELETE',
         headers: {
           'Authorization': `JWT ${localStorage.access_token}`
         },
         })
-        .then(
-          () => {
-            window.location.reload()
+        .then( () => {
+            props.getPosts()
+            handleClose()
           }
         );
-      }
+    }
 
     return (
         <>
